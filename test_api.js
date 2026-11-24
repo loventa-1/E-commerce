@@ -21,6 +21,10 @@ function request(options, data) {
 
 async function runTests() {
   console.log('Testing Backend API...');
+  const managerPassword = process.env.MANAGER_PASSWORD;
+  if (!managerPassword) {
+    throw new Error('Set MANAGER_PASSWORD to the value configured for the running backend.');
+  }
 
   // 1. Health check
   const health = await request({ hostname: 'localhost', port: 5000, path: '/api/health', method: 'GET' });
@@ -43,7 +47,7 @@ async function runTests() {
     path: '/api/auth/login',
     method: 'POST',
     headers: { 'Content-Type': 'application/json' }
-  }, { email: 'manager@shop.com', password: 'manager123' });
+  }, { email: 'manager@shop.com', password: managerPassword });
   console.log('4. Manager Login:', loginRes.status, loginRes.data.success ? 'SUCCESS' : 'FAIL');
   const token = loginRes.data.data.token;
 
@@ -100,4 +104,3 @@ async function runTests() {
 }
 
 runTests().catch(err => console.error('Test error:', err));
-

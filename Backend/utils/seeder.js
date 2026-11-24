@@ -12,10 +12,10 @@ const seedInitialData = async () => {
       await User.create({
         name: 'Store Manager',
         email: managerEmail,
-        password: process.env.MANAGER_PASSWORD || 'manager123',
+        password: process.env.MANAGER_PASSWORD,
         role: 'manager'
       });
-      console.log(`[Seed] Initial manager created (${managerEmail} / ${process.env.MANAGER_PASSWORD || 'manager123'})`);
+      console.log(`[Seed] Initial manager created (${managerEmail})`);
     }
 
     // 2. Seed Categories if empty
@@ -125,4 +125,3 @@ const seedInitialData = async () => {
 };
 
 module.exports = seedInitialData;
-

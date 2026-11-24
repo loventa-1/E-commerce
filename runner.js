@@ -77,7 +77,7 @@ waitForPort(27017).then(async () => {
   console.log(' Storefront (Public):   http://localhost:4200');
   console.log(' Manager Portal:        http://localhost:4200/login');
   console.log(' Manager Dashboard:     http://localhost:4200/dashboard');
-  console.log(' Manager Credentials:   manager@shop.com / manager123');
+  console.log(' Manager credentials:   configured in Backend/.env');
   console.log(' Backend API:           http://localhost:5000/api');
   console.log(' MongoDB:               mongodb://127.0.0.1:27017/shop_db');
   console.log('====================================================\n');

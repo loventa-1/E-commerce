@@ -99,7 +99,9 @@ async function main() {
       env: {
         ...process.env,
         PORT: String(backendPort),
-        MONGODB_URI: `mongodb://127.0.0.1:${mongoPort}/shop_test_db`
+        MONGODB_URI: `mongodb://127.0.0.1:${mongoPort}/shop_test_db`,
+        JWT_SECRET: 'integration-test-only-jwt-secret',
+        MANAGER_PASSWORD: 'integration-test-only-manager-password'
       },
       stdio: 'inherit'
     });
@@ -136,7 +138,10 @@ async function main() {
     const firstItem = publicItems.data?.data?.[0];
     check('Public items are returned without inventory quantities', publicItems.status === 200 && !!firstItem && firstItem.quantity === undefined);
 
-    const login = await api('/api/auth/login', 'POST', { email: 'manager@shop.com', password: 'manager123' });
+    const login = await api('/api/auth/login', 'POST', {
+      email: 'manager@shop.com',
+      password: 'integration-test-only-manager-password'
+    });
     const token = login.data?.data?.token;
     check('Manager can log in', login.status === 200 && login.data.success === true && !!token);
 

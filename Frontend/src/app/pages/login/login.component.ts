@@ -73,15 +73,6 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
                 </button>
               </form>
 
-              <!-- Demo Credentials Box -->
-              <div class="card bg-light border-0 rounded-3 p-3">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <span class="small fw-bold text-dark"><i class="bi bi-info-circle me-1 text-primary"></i> {{ 'Default Manager:' | translate }}</span>
-                  <button class="btn btn-sm btn-link p-0 text-decoration-none" (click)="fillDemoCredentials()">{{ 'Fill Demo' | translate }}</button>
-                </div>
-                <div class="text-muted small">{{ 'Email' | translate }}: <code>manager&#64;shop.com</code></div>
-                <div class="text-muted small">{{ 'Password' | translate }}: <code>manager123</code></div>
-              </div>
             </div>
 
             <!-- Footer link -->
@@ -98,7 +89,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 })
 export class LoginComponent {
   email: string = 'manager@shop.com';
-  password: string = 'manager123';
+  password = '';
   isLoading: boolean = false;
   errorMessage: string | null = null;
 
@@ -107,12 +98,6 @@ export class LoginComponent {
     private router: Router,
     private cdr: ChangeDetectorRef
   ) {}
-
-  fillDemoCredentials(): void {
-    this.email = 'manager@shop.com';
-    this.password = 'manager123';
-    this.cdr.markForCheck();
-  }
 
   onLogin(): void {
     if (!this.email || !this.password) {
@@ -141,4 +126,3 @@ export class LoginComponent {
     });
   }
 }
-

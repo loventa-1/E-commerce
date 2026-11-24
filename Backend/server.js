@@ -8,6 +8,12 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
   try {
+    const requiredEnvVars = ['JWT_SECRET', 'MANAGER_PASSWORD'];
+    const missingEnvVars = requiredEnvVars.filter((key) => !process.env[key]?.trim());
+    if (missingEnvVars.length > 0) {
+      throw new Error(`Missing required environment variables: ${missingEnvVars.join(', ')}`);
+    }
+
     // Connect to MongoDB
     await connectDB();
 
@@ -18,8 +24,6 @@ const startServer = async () => {
     app.listen(PORT, () => {
       console.log(`===============================================`);
       console.log(` Shop Backend API running on http://localhost:${PORT}`);
-      console.log(` Manager Email: ${process.env.MANAGER_EMAIL || 'manager@shop.com'}`);
-      console.log(` MongoDB URI:   ${process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/shop_db'}`);
       console.log(`===============================================`);
     });
   } catch (error) {

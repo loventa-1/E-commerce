@@ -1,5 +1,7 @@
 # Local order email
 
+Before starting the backend, copy `.env.example` to `.env` and set a unique, long `JWT_SECRET` and a strong `MANAGER_PASSWORD`. Keep `.env` local; only commit `.env.example` with placeholder values.
+
 Order confirmations are sent through Nodemailer to Mailpit. Mailpit captures the messages locally; this setup does not send email to a real mailbox.
 
 1. Start Laragon and make sure Mailpit is running.
