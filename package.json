@@ -1,0 +1,10 @@
+{
+  "name": "shop-project",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "npm --prefix Frontend run test && npm --prefix Frontend run build",
+    "test:backend": "node verify_all.js"
+  }
+}

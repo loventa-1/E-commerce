@@ -1,0 +1,107 @@
+/* Global App Styles */
+:root {
+  --primary-color: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --secondary-color: #64748b;
+  --accent-color: #f59e0b;
+  --bg-color: #f8fafc;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html[lang='ar'] body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+/* Navbar */
+.navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.badge-notification {
+  font-size: 0.7rem;
+  vertical-align: top;
+  margin-left: 2px;
+}
+
+/* Cards & Buttons */
+.card {
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+}
+
+.btn-rounded {
+  border-radius: 50px;
+}
+
+.price-tag {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Category Filter Pills */
+.category-pill {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #475569;
+  transition: all 0.2s;
+  display: inline-block;
+  user-select: none;
+}
+
+.category-pill:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.category-pill.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+/* Quantity input styling */
+.quantity-ctrl {
+  max-width: 130px;
+}
